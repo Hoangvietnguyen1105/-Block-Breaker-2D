@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Gamedev Canvas Workshop</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        canvas {
+            width: 80%;
+            height: 80%;
+            background: #eee;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="480" height="320"></canvas>
+
+    <script>
+        // JavaScript code goes here
+        const canvas = document.getElementById("myCanvas");
+        const ctx = canvas.getContext("2d");
+        let headX = 30
+        let headY = canvas.height - 50
+        ctx.beginPath();
+        ctx.moveTo(0, canvas.height - 20);
+        ctx.lineTo(canvas.width, canvas.height - 20);
+        ctx.stroke();
+        ctx.closePath();
+
+        // Vẽ người que
+        function drawStickFigure() {
+            // Vẽ đầu
+            ctx.beginPath();
+            ctx.arc(headX, headY, 5, 0, 2 * Math.PI);
+            ctx.fillStyle = "black";
+            ctx.fill();
+            ctx.closePath();
+
+            // Vẽ cơ thể
+            ctx.beginPath();
+            ctx.moveTo(headX, headY);
+            ctx.lineTo(headX, headY + 20);
+            ctx.strokeStyle = "black";
+            ctx.stroke();
+            ctx.closePath();
+
+            // Vẽ chân trái
+            ctx.beginPath();
+            ctx.moveTo(headX, headY + 20);
+            ctx.lineTo(headX - 10, headY + 30);
+            ctx.strokeStyle = "black";
+            ctx.stroke();
+            ctx.closePath();
+
+            // Vẽ chân phải
+            ctx.beginPath();
+            ctx.moveTo(headX, headY + 20);
+            ctx.lineTo(headX + 10, headY + 30);
+            ctx.strokeStyle = "black";
+            ctx.stroke();
+            ctx.closePath();
+
+            // Vẽ tay trái
+            ctx.beginPath();
+            ctx.moveTo(100, 90);
+            ctx.lineTo(80, 110);
+            ctx.strokeStyle = "black";
+            ctx.stroke();
+            ctx.closePath();
+
+            // Vẽ tay phải
+            ctx.beginPath();
+            ctx.moveTo(100, 90);
+            ctx.lineTo(120, 110);
+            ctx.strokeStyle = "black";
+            ctx.stroke();
+            ctx.closePath();
+        }
+
+        // Gọi hàm để vẽ người que
+        drawStickFigure();
+
+
+
+
+    </script>
+</body>
+
+</html>

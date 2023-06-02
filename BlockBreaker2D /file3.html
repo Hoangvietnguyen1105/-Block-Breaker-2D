@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Gamedev Canvas Workshop</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        canvas {
+            background: #eee;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="480" height="320"></canvas>
+
+    <script>
+        // JavaScript code goes here
+        const canvas = document.getElementById("myCanvas");//tham chiếu đến dom
+        const ctx = canvas.getContext("2d");//tạo khung vẽ
+        let x = canvas.width / 2;//tạo vị trí cho toạ độ x
+        let y = canvas.height - 30;//toạ vị trí cho toạ độ y
+        let dx = 2;
+        let dy = -2;
+        const ballRadius = 10;
+        function drawBall() {
+            ctx.beginPath();//bắt đầu vẽ
+            ctx.arc(x, y, ballRadius, 0, Math.PI * 2);//vẽ hình tròn theo toạ độ
+            ctx.fillStyle = "#800080";//màu
+            ctx.fill();//to màu
+            ctx.closePath();
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);//xoá các hình, có 4 tham số,2 số đầu là góc trên cùng bên trái 
+            // và dưới cùng bên phải
+            drawBall();//vẽ
+            if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {//điều kiện khi quả bóng vượt quá tường thì sẽ bị đổi ngược hướng lại
+                dx = -dx;//đổi ngược hướng khi trục x của quả bóng > độ dài width hoặc < hơn 0    
+                //do toạ độ luôn là tâm quả bóng nên lúc nào cũng pahỉ trừ đi ballradius là bán kính để hiệu ứng vào cạnh của bóng                                               
+            }
+            if (y + dy > canvas.height - ballRadius || y + dy < ballRadius) {
+                dy = -dy;//đổi hướng khi trục y của bóng > độ dài height hoặc < hơn 0
+            }
+
+
+            x += dx;//sau mỗi lần vẽ thì đổi toạ độ để bóng 
+            y += dy;//sau mỗi lần vẽ thì đổi toạ độ để bóng 
+        }
+
+        //sau mỗi 10 mili giây sẽ vẽ quả bóng ở vị trí mới và xoá quả bóng ở vị trí cũ đi để khiến quả bóng như đang chuyển động
+
+
+        setInterval(draw, 10);//hàm set thời gian để hàm draw chạy mỗi 10 mili giây
+
+
+
+
+    </script>
+</body>
+
+</html>

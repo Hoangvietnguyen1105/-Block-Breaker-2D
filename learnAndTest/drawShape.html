@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        canvas {
+            background: #eee;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="480" height="320"></canvas>
+    <script>
+        const canvas = document.getElementById("myCanvas");
+        const context = canvas.getContext("2d");
+
+
+        //vẽ hình vuông
+        context.fillStyle = "red"
+        context.fillRect(10, 10, 30, 30)
+        context.fillStyle = "red"
+        context.fillRect(60, 60, 30, 30)
+        //vẽ tam giác
+        context.beginPath();
+        context.moveTo(0, 100);
+        context.lineTo(250, 150);
+        context.lineTo(250, 50);
+        context.lineTo(200, 100);
+        context.strokeStyle = "rgba(0, 0, 255, 0.5)"
+        context.stroke();
+        context.closePath()
+
+    </script>
+</body>
+
+</html>
